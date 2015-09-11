@@ -1,12 +1,15 @@
 package guru.springframework.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Version;
 import java.math.BigDecimal;
 
 @Entity
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //todo update to sequence for Oracle
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Version
