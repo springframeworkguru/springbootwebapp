@@ -1,16 +1,17 @@
 package guru.springframework.configuration;
 
 import oracle.jdbc.pool.OracleDataSource;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 
-@Configuration
-@ConfigurationProperties("oracle")
+/**
+ * Un-comment the annoations to use the Oracle Java config
+ */
+//@Configuration
+//@ConfigurationProperties("oracle")
 public class OracleConfiguration {
     @NotNull
     private String username;
