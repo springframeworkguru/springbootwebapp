@@ -1,7 +1,7 @@
 # Spring Boot Web Application
-##Connecting to Oracle
+##Using H2 and Oracle for a Spring Boot Web Application
 
-How to setup an JDBC connection to an Oracle database.
+How to use H2 and Oracle with a Spring Boot Web Application using Spring Framework profiles.
 
-You can see the full blog post about connecting Spring Boot to Oracle at  [Spring Framework Guru](https://springframework.guru/)
+You can see the full blog post about using Spring Boot with H2 and Oracle at  [Spring Framework Guru](https://springframework.guru/)
 
