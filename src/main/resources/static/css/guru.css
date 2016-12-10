@@ -1,0 +1,8 @@
+input[type=submit] {
+     background:none!important;
+     border:none;
+     padding:0!important;
+     color: blue;
+     text-decoration: underline;
+     cursor:pointer;
+}
