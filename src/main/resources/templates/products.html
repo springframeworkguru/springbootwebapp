@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
     <title>Spring Framework Guru</title>
@@ -9,26 +9,36 @@
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+
+
     <div th:if="${not #lists.isEmpty(products)}">
-        <h2>Product List</h2>
+        <form th:action="@{/logout}" method="post">
+            <div class="col-sm-10"><h2>Product Listing</h2></div>
+            <div class="col-sm-2" style="padding-top: 30px;">
+                     <span sec:authorize="isAuthenticated()">
+                    <input type="submit" value="Sign Out"/>
+                               </span>
+            </div>
+        </form>
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
                 <th>Product Id</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>View</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
             </tr>
             <tr th:each="product : ${products}">
                 <td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
                 <td th:text="${product.productId}">Product Id</td>
                 <td th:text="${product.description}">descirption</td>
                 <td th:text="${product.price}">price</td>
-                <td><a th:href="${'/product/' + product.id}">View</a></td>
-                <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
-                <td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
+                <td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${'/product/show/' + product.id}">View</a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
             </tr>
         </table>
 

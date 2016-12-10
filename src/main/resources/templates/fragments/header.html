@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
-
+    <link rel="stylesheet" type="text/css" href="../static/css/guru.css" />
 </head>
 <body>
 
@@ -13,13 +13,15 @@
                     <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
                     <ul class="nav navbar-nav">
                         <li><a href="#" th:href="@{/products}">Products</a></li>
-                        <li><a href="#" th:href="@{/product/new}">Create Product</a></li>
+                        <li><a href="#" th:href="@{/product/new}" sec:authorize="hasRole('ROLE_ADMIN')">Create Product</a></li>
+                        <li><a href="#" th:href="@{/login}">Sign In</a></li>
                     </ul>
-
                 </div>
             </div>
         </nav>
-
+        <div class="welcome">
+            <span sec:authorize="isAuthenticated()">Welcome <span sec:authentication="name"></span></span>
+        </div>
         <div class="jumbotron">
             <div class="row text-center">
                 <div class="">
@@ -35,5 +37,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
