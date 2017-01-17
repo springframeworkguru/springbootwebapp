@@ -80,11 +80,7 @@
 			<artifactId>jasypt-springsecurity3</artifactId>
 			<version>1.9.2</version>
 		</dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt-spring3</artifactId>
-            <version>1.9.2</version>
-        </dependency>
+
 	</dependencies>
 	
 	<build>
