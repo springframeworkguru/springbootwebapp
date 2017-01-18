@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
+      httpSecurity
                 .authorizeRequests().antMatchers("/","/products","/product/show/*","/console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -59,6 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
        httpSecurity.csrf().disable();
        httpSecurity.headers().frameOptions().disable();
+       // http.authorizeRequests().antMatchers("/").permitAll();
     }
 
 

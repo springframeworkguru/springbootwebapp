@@ -1,4 +1,4 @@
-package guru.springframework.services;
+package guru.springframework.services.reposervices;
 
 import guru.springframework.domain.User;
 
@@ -63,7 +63,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUsername(String userName) {
-
         return userRepository.findByUsername(userName);
     }
 }

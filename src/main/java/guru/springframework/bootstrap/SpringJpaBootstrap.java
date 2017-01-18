@@ -4,6 +4,7 @@ import guru.springframework.domain.Product;
 import guru.springframework.domain.Role;
 import guru.springframework.domain.User;
 import guru.springframework.repositories.ProductRepository;
+import guru.springframework.services.ProductService;
 import guru.springframework.services.RoleService;
 import guru.springframework.services.UserService;
 import org.apache.log4j.Logger;
@@ -21,11 +22,22 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
     private ProductRepository productRepository;
     private UserService userService;
     private RoleService roleService;
+
     private Logger log = Logger.getLogger(SpringJpaBootstrap.class);
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @Autowired
+    public void setRoleService(RoleService roleService) {
+        this.roleService = roleService;
     }
 
 
@@ -34,7 +46,8 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         loadProducts();
         loadUsers();
         loadRoles();
-
+        assignUsersToUserRole();
+        assignUsersToAdminRole();
     }
 
     private void loadProducts() {
@@ -64,8 +77,8 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         userService.saveOrUpdate(user1);
 
         User user2 = new User();
-        user1.setUsername("admin");
-        user1.setPassword("admin");
+        user2.setUsername("admin");
+        user2.setPassword("admin");
         userService.saveOrUpdate(user2);
 
     }

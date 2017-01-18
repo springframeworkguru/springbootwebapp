@@ -1,4 +1,4 @@
-package guru.springframework.services;
+package guru.springframework.services.reposervices;
 
 import guru.springframework.domain.Role;
 import guru.springframework.repositories.RoleRepository;
@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
     private RoleRepository roleRepository;
 
     @Autowired
-    public void setRoleRepsoitory(RoleRepository roleRepsoitory) {
+    public void setRoleRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 
