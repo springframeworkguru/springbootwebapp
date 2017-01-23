@@ -1,4 +1,4 @@
-package guru.springframework.configuration;
+package guru.springframework.config;
 
 import org.jasypt.springsecurity3.authentication.encoding.PasswordEncoder;
 import org.jasypt.util.password.StrongPasswordEncryptor;
@@ -15,8 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SpringSecConfig extends WebSecurityConfigurerAdapter {
 
     private AuthenticationProvider authenticationProvider;
 
@@ -49,15 +48,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-      httpSecurity
+           httpSecurity
                 .authorizeRequests().antMatchers("/","/products","/product/show/*","/console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/")
                 .and()
                 .logout().permitAll();
-        httpSecurity.csrf().ignoringAntMatchers("/h2-console").disable();
+
+        httpSecurity.csrf().disable();
+        httpSecurity.headers().frameOptions().disable();
       // httpSecurity.csrf().disable();
     //   httpSecurity.headers().frameOptions().disable();
 

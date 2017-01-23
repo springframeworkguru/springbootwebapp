@@ -17,7 +17,9 @@
             <div class="col-sm-10"><h2>Product Listing</h2></div>
             <div class="col-sm-2" style="padding-top: 30px;">
                      <span sec:authorize="isAuthenticated()">
-                    <input type="submit" value="Sign Out"/>
+
+
+                    <input type="submit" value="Sign Out" />
                                </span>
             </div>
         </form>
@@ -28,8 +30,8 @@
                 <th>Description</th>
                 <th>Price</th>
                 <th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Edit</th>
+                <th sec:authorize="hasAuthority('ROLE_ADMIN')">Delete</th>
             </tr>
             <tr th:each="product : ${products}">
                 <td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
@@ -37,8 +39,8 @@
                 <td th:text="${product.description}">descirption</td>
                 <td th:text="${product.price}">price</td>
                 <td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${'/product/show/' + product.id}">View</a></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')"><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+                <td sec:authorize="hasAuthority('ROLE_ADMIN')"><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
             </tr>
         </table>
 
