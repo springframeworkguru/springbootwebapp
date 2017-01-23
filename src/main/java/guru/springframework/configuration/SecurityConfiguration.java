@@ -54,11 +54,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
+                .defaultSuccessUrl("/")
                 .and()
                 .logout().permitAll();
-
-       httpSecurity.csrf().disable();
-       httpSecurity.headers().frameOptions().disable();
+        httpSecurity.csrf().ignoringAntMatchers("/h2-console").disable();
+      // httpSecurity.csrf().disable();
+    //   httpSecurity.headers().frameOptions().disable();
 
     }
 
