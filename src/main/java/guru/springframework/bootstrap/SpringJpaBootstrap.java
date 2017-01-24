@@ -4,7 +4,6 @@ import guru.springframework.domain.Product;
 import guru.springframework.domain.Role;
 import guru.springframework.domain.User;
 import guru.springframework.repositories.ProductRepository;
-import guru.springframework.services.ProductService;
 import guru.springframework.services.RoleService;
 import guru.springframework.services.UserService;
 import org.apache.log4j.Logger;
@@ -72,12 +71,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
 
     private void loadUsers() {
         User user1 = new User();
-        user1.setUserName("user");
+        user1.setUsername("user");
         user1.setPassword("user");
         userService.saveOrUpdate(user1);
 
         User user2 = new User();
-        user2.setUserName("admin");
+        user2.setUsername("admin");
         user2.setPassword("admin");
         userService.saveOrUpdate(user2);
 
@@ -100,7 +99,7 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         roles.forEach(role -> {
             if (role.getRole().equalsIgnoreCase("USER")) {
                 users.forEach(user -> {
-                    if (user.getUserName().equals("user")) {
+                    if (user.getUsername().equals("user")) {
                         user.addRole(role);
                         userService.saveOrUpdate(user);
                     }
@@ -115,7 +114,7 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         roles.forEach(role -> {
             if (role.getRole().equalsIgnoreCase("ADMIN")) {
                 users.forEach(user -> {
-                    if (user.getUserName().equals("admin")) {
+                    if (user.getUsername().equals("admin")) {
                         user.addRole(role);
                         userService.saveOrUpdate(user);
                     }

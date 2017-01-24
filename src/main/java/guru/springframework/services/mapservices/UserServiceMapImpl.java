@@ -58,7 +58,7 @@ public class UserServiceMapImpl extends AbstractMapService implements UserServic
             @Override
             public boolean test(DomainObject domainObject) {
                 User user = (User) domainObject;
-                return user.getUserName().equalsIgnoreCase(userName);
+                return user.getUsername().equalsIgnoreCase(userName);
             }
         }).findFirst();
 
