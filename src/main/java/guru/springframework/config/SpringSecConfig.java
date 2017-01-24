@@ -49,7 +49,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
            httpSecurity
-                .authorizeRequests().antMatchers("/","/products","/product/show/*","/console/**").permitAll()
+                .authorizeRequests().antMatchers("/","/products","/product/show/*","/console/**","/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

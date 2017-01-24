@@ -64,7 +64,7 @@ public class UserServiceJpaDaoImpl extends AbstractJpaDaoService implements User
     }
 
     @Override
-    public User findByUsername(String userName) {
+    public User findByUserName(String userName) {
         EntityManager em = emf.createEntityManager();
 
         return em.createQuery("from User where username = :userName", User.class).getSingleResult();

@@ -20,7 +20,7 @@ public class UserToUserDetails implements Converter<User, UserDetails> {
         UserDetailsImpl userDetails = new UserDetailsImpl();
 
         if (user != null) {
-            userDetails.setUsername(user.getUsername());
+            userDetails.setUsername(user.getUserName());
             userDetails.setPassword(user.getEncryptedPassword());
             userDetails.setEnabled(user.getEnabled());
 
