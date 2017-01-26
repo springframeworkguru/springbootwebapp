@@ -13,9 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jt on 12/21/15.
- */
 @Service
 @Profile("springdatajpa")
 public class UserServiceImpl implements UserService {
