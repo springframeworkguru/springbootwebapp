@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * Created by jt on 12/28/15.
  */
 @Service("userDetailsService")
-public class SpringSecUserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserService userService;
     private Converter<User, UserDetails> userUserDetailsConverter;
@@ -32,7 +32,6 @@ public class SpringSecUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        return userUserDetailsConverter.convert(userService.findByUserName(username));
+        return userUserDetailsConverter.convert(userService.findByUsername(username));
     }
 }

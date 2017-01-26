@@ -1,4 +1,4 @@
-package guru.springframework.services.reposervices;
+package guru.springframework.services;
 
 import guru.springframework.domain.Role;
 import guru.springframework.repositories.RoleRepository;

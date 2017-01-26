@@ -23,13 +23,10 @@ public class UserToUserDetails implements Converter<User, UserDetails> {
             userDetails.setUsername(user.getUsername());
             userDetails.setPassword(user.getEncryptedPassword());
             userDetails.setEnabled(user.getEnabled());
-
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
             user.getRoles().forEach(role -> {
                 authorities.add(new SimpleGrantedAuthority(role.getRole()));
             });
-
             userDetails.setAuthorities(authorities);
         }
 

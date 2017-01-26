@@ -10,8 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * Created by jt on 12/14/15.
  */
 @Configuration
-@EnableJpaRepositories("guru.springframework.repositories")
-@EnableScheduling
 public class CommonBeanConfig {
 
     @Bean

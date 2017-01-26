@@ -1,4 +1,4 @@
-package guru.springframework.services.reposervices;
+package guru.springframework.services;
 
 import guru.springframework.domain.User;
 
@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
     public List<?> listAll() {
         List<User> users = new ArrayList<>();
@@ -62,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserName(String username) {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 }
