@@ -1,5 +1,5 @@
 # Spring Boot Web Application
-##Connecting to Oracle
+## Connecting to Oracle
 
 How to setup an JDBC connection to an Oracle database.
 
