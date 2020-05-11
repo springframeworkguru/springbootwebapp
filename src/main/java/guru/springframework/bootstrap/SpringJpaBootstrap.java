@@ -6,7 +6,8 @@ import guru.springframework.domain.User;
 import guru.springframework.repositories.ProductRepository;
 import guru.springframework.services.RoleService;
 import guru.springframework.services.UserService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -22,7 +23,7 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
     private UserService userService;
     private RoleService roleService;
 
-    private Logger log = Logger.getLogger(SpringJpaBootstrap.class);
+    private Logger log = LoggerFactory.getLogger(SpringJpaBootstrap.class);
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
