@@ -2,10 +2,13 @@ package guru.springframework.repositories;
 
 import guru.springframework.configuration.RepositoryConfiguration;
 import guru.springframework.domain.Product;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
@@ -13,17 +16,12 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {RepositoryConfiguration.class})
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
 public class ProductRepositoryTest {
 
-    private ProductRepository productRepository;
-
     @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
     @Test
     public void testSaveProduct(){
@@ -39,7 +37,7 @@ public class ProductRepositoryTest {
         assertNotNull(product.getId()); //not null after save
 
         //fetch from DB
-        Product fetchedProduct = productRepository.findOne(product.getId());
+        Product fetchedProduct = productRepository.findById(product.getId()).orElse(null);
 
         //should not be null
         assertNotNull(fetchedProduct);
@@ -53,7 +51,7 @@ public class ProductRepositoryTest {
         productRepository.save(fetchedProduct);
 
         //get from DB, should be updated
-        Product fetchedUpdatedProduct = productRepository.findOne(fetchedProduct.getId());
+        Product fetchedUpdatedProduct = productRepository.findById(fetchedProduct.getId()).orElse(null);
         assertEquals(fetchedProduct.getDescription(), fetchedUpdatedProduct.getDescription());
 
         //verify count of products in DB
