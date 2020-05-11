@@ -2,7 +2,8 @@ package guru.springframework.bootstrap;
 
 import guru.springframework.domain.Product;
 import guru.springframework.repositories.ProductRepository;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -15,7 +16,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 
     private ProductRepository productRepository;
 
-    private Logger log = Logger.getLogger(ProductLoader.class);
+    private Logger log = LoggerFactory.getLogger(ProductLoader.class);
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
