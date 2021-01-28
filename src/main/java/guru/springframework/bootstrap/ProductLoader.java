@@ -28,7 +28,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         Product shirt = new Product();
-        shirt.setDescription("Spring Framework Guru Shirt");
+        shirt.setDescription("Paul is the best");
         shirt.setPrice(new BigDecimal("18.95"));
         shirt.setImageUrl("https://springframework.guru/wp-content/uploads/2015/04/spring_framework_guru_shirt-rf412049699c14ba5b68bb1c09182bfa2_8nax2_512.jpg");
         shirt.setProductId("235268845711068308");
