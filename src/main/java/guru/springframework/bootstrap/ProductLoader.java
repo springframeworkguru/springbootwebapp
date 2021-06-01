@@ -4,6 +4,7 @@ import guru.springframework.domain.Product;
 import guru.springframework.repositories.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -17,6 +18,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
     private ProductRepository productRepository;
 
     private Logger log = LoggerFactory.getLogger(ProductLoader.class);
+
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
@@ -39,6 +41,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
         mug.setDescription("Spring Framework Guru Mug");
         mug.setImageUrl("https://springframework.guru/wp-content/uploads/2015/04/spring_framework_guru_coffee_mug-r11e7694903c348e1a667dfd2f1474d95_x7j54_8byvr_512.jpg");
         mug.setProductId("168639393495335947");
+
         productRepository.save(mug);
 
         log.info("Saved Mug - id:" + mug.getId());
