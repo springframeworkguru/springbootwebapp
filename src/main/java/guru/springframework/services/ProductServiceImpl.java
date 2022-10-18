@@ -5,6 +5,7 @@ import guru.springframework.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@ComponentScan
 @Service
 public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
