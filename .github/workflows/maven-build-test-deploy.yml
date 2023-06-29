@@ -1,12 +1,12 @@
 name: Test & Build Using Java & Maven, publish test results
-on:
-  #push:
+on: [ push,pull_request]
+ #push:
+   # branches: 
+     # - main
+  #pull_request:
     #branches: 
-      #- main
-  pull_request:
-    #branches: 
-      #- main
-    types: [ assigned, opened, synchronize, reopened ]
+     # - main
+    #types: [ assigned, opened, synchronize, reopened ]
 
 jobs:
   build-test-deploy: 
