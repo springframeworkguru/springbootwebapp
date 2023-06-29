@@ -1,15 +1,15 @@
 name: Test & Build Using Java & Maven, publish test results
 on:
-  push:
-    branches: 
-      - main
+  #push:
+    #branches: 
+      #- main
   pull_request:
-    branches: 
-      - main
+    #branches: 
+      #- main
     types: [ assigned, opened, synchronize, reopened ]
 
 jobs:
-  github-actions-build: 
+  build-test-deploy: 
     uses: github-poc-ado/Reuseable-workflow/.github/workflows/framework.yml@main
     permissions:
       checks: write
