@@ -1,0 +1,26 @@
+name: Test & Build Using Java & Maven, publish test results
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+    types: [ assigned, opened, synchronize, reopened ]
+
+jobs:
+  github-actions-build: 
+    uses: github-poc-ado/Reuseable-workflow/.github/workflows/framework.yml@main
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+    #with:
+         #java-version: '11'
+  
+  #github-actions-azlogin:
+   # uses: github-poc-ado/Reuseable-workflow/.github/workflows/Azure_login_caller.yml@main
+    #secrets: inherit 
+     #creds: ${{ secrets.AZURE_CREDENTIALS }}
+     
+ 
