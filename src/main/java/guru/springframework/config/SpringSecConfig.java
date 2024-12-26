@@ -47,7 +47,7 @@ public AuthenticationProvider daoAuthenticationProvider(UserDetailsService userD
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
            httpSecurity
-                .authorizeRequests().antMatchers("/","/products","/product/show/*","/console/*","/h2-console/**").permitAll()
+                .authorizeRequests().antMatchers("/","/products","/product/show/*","/console/*","/h2-console/**", "/images/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
